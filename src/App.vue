@@ -23,9 +23,9 @@ const removeTodo = (index) => {
   <div class="container">
     <h1>Todolist</h1>
       <div>
-      <input v-model = "newTodo" placeholder="Add new Todo"/>
-      <button v-on:click="addTodo">Add</button>
-    </div>
+        <input v-model = "newTodo" placeholder="Add new Todo"/>
+        <button v-on:click="addTodo">Add</button>
+      </div>
 
     <!--todo-list-->
     <ul>
@@ -34,6 +34,7 @@ const removeTodo = (index) => {
         <button v-on:click="removeTodo(index)">X</button>
       </li>
     </ul>
+
   </div>
 </template>
 
