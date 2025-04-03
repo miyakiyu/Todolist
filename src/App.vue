@@ -1,21 +1,25 @@
 <script setup>
 import { ref } from 'vue';
+//DEFINED
 //bind the input newTodo
 const newTodo = ref(''); 
 //array of todos
 const todos = ref([]);
+let id = 0;
+
+//FUNCTIONS
 //addTodo function
 const addTodo = () =>{
   if(newTodo.value.trim() !== ''){
-    todos.value.push({ text: newTodo.value});
+    todos.value.push({ id: id++, text: newTodo.value});
     newTodo.value = '';
   }
 };
 //removeTodo function
-const removeTodo = (index) => {
-  //from index delete 1 element
-  todos.value.splice(index, 1);
+const removeTodo = (todo) => {
+  todos.value = todos.value.filter((t) => t !== todo);
 };
+
 
 </script>
 
@@ -31,17 +35,9 @@ const removeTodo = (index) => {
     <ul>
       <li v-for = "todo in todos" :key = "index">
         {{ todo.text }}
-        <button v-on:click="removeTodo(index)">X</button>
+        <button v-on:click="removeTodo(todo)">X</button>
       </li>
     </ul>
 
   </div>
 </template>
-
-<style>
-.container {
-  max-width: 400px;
-  margin: auto;
-  text-align: center;
-}
-</style>
