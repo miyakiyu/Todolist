@@ -1,6 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 //DEFINED
 //bind the input newTodo
 const newTodo = ref(''); 
@@ -12,7 +11,7 @@ let id = 0;
 //addTodo function
 const addTodo = () =>{
   if(newTodo.value.trim() !== ''){
-    todos.value.push({ id: id++, text: newTodo.value});
+    todos.value.push({ id: id++, text: newTodo.value, isEdit: false});
     newTodo.value = '';
   }
 };
@@ -20,6 +19,17 @@ const addTodo = () =>{
 const removeTodo = (todo) => {
   todos.value = todos.value.filter((t) => t !== todo);
 };
+//editTodo function
+//if "isEdit" is true show input, other show text
+const editTodo = async(todo) => {
+  todo.isEdit = true;
+  await nextTick();
+  editInput.value?.focus();
+};
+//saveTodo function
+const saveTodo = (todo) => {
+  todo.isEdit = false;
+}
 
 //LOCALSTORAGE
 //listen on todos, if todos change, update localstorage
@@ -46,9 +56,15 @@ onMounted(()=>{
 
     <!--todo-list-->
     <ul>
-      <li v-for = "todo in todos" :key = "index">
-        {{ todo.text }}
-        <button v-on:click="removeTodo(todo)">X</button>
+      <li v-for = "todo in todos" :key = "todo.id">
+        <input 
+          v-if = "todo.isEdit"
+          v-model="todo.text"
+          @blur="saveTodo(todo)"
+        />
+        <span v-else>{{ todo.text }}</span>
+        <button v-on:click="editTodo(todo)">✏️</button>
+        <button v-on:click="removeTodo(todo)">🗑️</button>
       </li>
     </ul>
 
