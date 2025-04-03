@@ -1,5 +1,127 @@
+
+/* General container styles */
 .container {
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header style */
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input and Add button container */
+div {
+  margin-bottom: 20px;
+}
+
+/* Input for adding new todo */
+input[type="text"] {
+  width: 75%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  margin-right: 10px;
+  transition: border-color 0.3s ease;
+  outline: none; 
+}
+
+input[type="text"]:focus {
+  border-color: #007BFF;
+}
+
+/* Add button */
+button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Todo List Styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Styling */
+span {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Edit input field styling */
+input[type="text"][v-if] {
+  width: 80%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 25px; 
+  margin-right: 10px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"][v-if]:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+/* Button Styling (Edit and Delete) */
+button {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: #ff5c5c;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d9534f;
+  transform: scale(1.05);
+}
+
+/* Button for edit */
+button:first-of-type {
+  background-color: #ffc107;
+}
+
+button:first-of-type:hover {
+  background-color: #e0a800;
+}
+
+/* Completed todo styling */
+span.completed {
+  text-decoration: line-through;
+  color: #bbb;
 }
