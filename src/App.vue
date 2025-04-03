@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { watch } from 'vue';
 //DEFINED
 //bind the input newTodo
 const newTodo = ref(''); 
@@ -20,7 +21,19 @@ const removeTodo = (todo) => {
   todos.value = todos.value.filter((t) => t !== todo);
 };
 
-
+//LOCALSTORAGE
+//listen on todos, if todos change, update localstorage
+//deep means that if elements in todos change, ie: id change , it will also update localstorage
+watch(todos, (newTodo) =>{
+  localStorage.setItem('todos', JSON.stringify(newTodo));
+}, {deep: true});
+//Read localstorage
+onMounted(()=>{
+  const storedTodo = localStorage.getItem('todos');
+  if(storedTodo){
+    todos.value = JSON.parse(storedTodo);
+  }
+})
 </script>
 
 <template>
