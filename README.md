@@ -1,19 +1,16 @@
 # Todolist
 
 ## Project Setup
-
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
+### Trying this project
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
+---
+## Test 
 ```sh
-npm run build
+npm run test
 ```
