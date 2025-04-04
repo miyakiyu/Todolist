@@ -95,7 +95,7 @@ input[type="text"][v-if]:focus {
 }
 
 /* Button Styling (Edit and Delete) */
-button {
+button:second-of-type {
   padding: 5px 10px;
   font-size: 0.9rem;
   color: #fff;
@@ -106,7 +106,7 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:second-of-type:hover {
   background-color: #d9534f;
   transform: scale(1.05);
 }
